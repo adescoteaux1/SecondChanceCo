@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS Products
     product_name varchar(50) NOT NULL,
     sellerID     int         NOT NULL,
     descr        varchar(200),
-    picture      BLOB,
+    picture      varchar(100),
     CONSTRAINT pk PRIMARY KEY (productID),
     CONSTRAINT fk_10 FOREIGN KEY (sellerID)
         references Sellers (sellerID)
