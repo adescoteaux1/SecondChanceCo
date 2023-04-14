@@ -3,16 +3,16 @@ import json
 from src import db
 
 
-products = Blueprint('products', __name__)
+sellers = Blueprint('sellers', __name__)
 
-# Get all the products from the database
-@products.route('/products', methods=['GET'])
-def get_products():
+# Get all the sellers from the database
+@sellers.route('/sellers', methods=['GET'])
+def get_sellers():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT id, product_code, product_name, list_price FROM products')
+    cursor.execute('SELECT first_name, last_name, sellerID, phone, email1 FROM products')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
@@ -31,15 +31,30 @@ def get_products():
 
     return jsonify(json_data)
 
-# get the top 5 products from the database
-@products.route('/mostExpensive')
-def get_most_pop_products():
+# Get details for a specific seller with particular userID
+@sellers.route('/seller/<sellerID>', methods=['GET'])
+def get_seller(sellerID):
+    cursor = db.get_db().cursor()
+    cursor.execute('select * from sellers where SellerID = {0}'.format(SellerID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+
+# get all the posts from a specific seller
+@sellers.route('/mostExpensive')
+def get_most_posts(sellerID):
     cursor = db.get_db().cursor()
     query = '''
-        SELECT product_code, product_name, list_price, reorder_level
+        SELECT product_name, unitPrice 
         FROM products
-        ORDER BY list_price DESC
-        LIMIT 5
+        WHERE sellerID = {0}'.format(SellerID)
     '''
     cursor.execute(query)
        # grab the column headers from the returned data
@@ -58,3 +73,5 @@ def get_most_pop_products():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+
