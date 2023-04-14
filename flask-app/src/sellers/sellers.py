@@ -48,7 +48,7 @@ def get_seller(sellerID):
 
 
 # get all the posts from a specific seller
-@sellers.route('/mostExpensive')
+@sellers.route('/seller/<sellerID>/<post>', methods=['GET'])
 def get_most_posts(sellerID):
     cursor = db.get_db().cursor()
     query = '''
