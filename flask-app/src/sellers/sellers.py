@@ -47,6 +47,7 @@ def get_seller(sellerID):
     return the_response
 
 
+
 # get all the posts from a specific seller
 @sellers.route('/seller/<sellerID>/<post>', methods=['GET'])
 def get_most_posts(sellerID):
@@ -75,3 +76,107 @@ def get_most_posts(sellerID):
     return jsonify(json_data)
 
 
+
+
+#This adds a new post for a seller
+@sellers.route('/seller/<sellerID>/products', methods=['POST'])
+def add_post(sellerID):
+    data = request.get_json()
+    productID = data['productID']
+    picture = data['picture']
+    descr = data['descr']
+    product_name = data['product_name']
+    unitPrice = data['unitPrice']
+
+
+    # insert the new post into the database
+    cursor = db.get_db().cursor()
+    query = '''
+        INSERT INTO Products (productID, picture, descr, SellerID, product_name, unitPrice)
+        VALUES (%s, %s, %s, %s, %s, %s)
+    '''
+    values = (productID, picture, descr, sellerID, product_name, unitPrice)
+    cursor.execute(query, values)
+    db.get_db().commit()
+
+    return jsonify({'message': 'Post added successfully'})
+
+
+
+# update email2 of the seller
+@sellers.route('/seller/<sellerID>/email', methods=['PUT'])
+def update_seller_email(sellerID):
+    data = request.get_json()
+    email = data['email2']
+
+    # update the email address for the seller in the database
+    cursor = db.get_db().cursor()
+    query = '''
+        UPDATE sellers
+        SET email2 = %s
+        WHERE sellerID = {0}'.format(SellerID)
+    '''
+    values = (email, sellerID)
+    cursor.execute(query, values)
+    db.get_db().commit()
+
+    return jsonify({'message': 'Seller email2 updated successfully'})
+
+
+
+# This deleates a seller given a specific sellerID
+@sellers.route('/seller/<sellerID>', methods=['DELETE'])
+def delete_seller(sellerID):
+    # delete the seller from the database
+    cursor = db.get_db().cursor()
+    query = '''
+        DELETE FROM sellers
+        WHERE sellerID = {0}'.format(SellerID)
+    '''
+    values = (sellerID,)
+    cursor.execute(query, values)
+    db.get_db().commit()
+
+    return jsonify({'message': 'Seller deleted successfully'})
+
+
+# update post name, price, and decription
+@sellers.route('/seller/<sellerID>/posts/<productID>', methods=['PUT'])
+def update_post(sellerID, productID):
+    data = request.get_json()
+    product_name = data['product_name']
+    unitPrice = data['unitPrice']
+    description = data['description']
+
+    # update the post in the database
+    cursor = db.get_db().cursor()
+    query = '''
+        UPDATE Products
+        SET product_name = %s, unitPrice = %s, description = %s
+        WHERE postID = %s AND sellerID = %s
+    '''
+    values = (product_name, unitPrice, description, productID, sellerID)
+    cursor.execute(query, values)
+    db.get_db().commit()
+
+    # check if the post was updated
+    if cursor.rowcount == 0:
+        return jsonify({'message': 'Post not found for this seller'})
+
+    return jsonify({'message': 'Post updated successfully'})
+
+
+# delete a specifc post
+@sellers.route('/seller/<sellerID>/posts/<productID>', methods=['DELETE'])
+def delete_post(sellerID, productID):
+    # delete the post from the database
+    cursor = db.get_db().cursor()
+    query = '''
+        DELETE FROM posts
+        WHERE productID = {0}'.format(ProductID) AND sellerID = {0}'.format(SellerID)
+    '''
+    values = (productID, sellerID)
+    cursor.execute(query, values)
+    db.get_db().commit()
+    
+    return jsonify({'message': 'Post deleted successfully'})
