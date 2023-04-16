@@ -84,4 +84,4 @@ def get_cart(customerID):
     return the_response
 
 # Delete a product from a customers cart
-@customers.route('/customers/<customerID>', methods=['DELETE'])
+# @customers.route('/customers/<customerID>', methods=['DELETE'])  
