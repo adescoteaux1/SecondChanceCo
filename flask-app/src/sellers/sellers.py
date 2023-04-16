@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify, make_response
 import json
 from src import db
 
-
 sellers = Blueprint('sellers', __name__)
 
 # Get all the sellers from the database
@@ -35,7 +34,7 @@ def get_sellers():
 @sellers.route('/seller/<sellerID>', methods=['GET'])
 def get_seller(sellerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from sellers where SellerID = {0}'.format(SellerID))
+    cursor.execute('select * from sellers where SellerID = {0}'.format(sellerID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
