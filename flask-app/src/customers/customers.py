@@ -79,7 +79,6 @@ def get_cart(customerID):
     return the_response
 
 # Delete a product from a customers cart
-<<<<<<< HEAD
 @customers.route('/customers/<customerID>/<cart>/<productID>', methods=['DELETE'])
 def cart_product_delete(customerID, productID):
     cursor = db.get_db().cursor()
@@ -94,7 +93,4 @@ def cart_product_delete(customerID, productID):
     return jsonify({'message': 'Item deleted from cart successfully'})
 
 # Get a specific customers orders
-@customers.route('/customers/<customerID>/<orders>', methods=['GET'])
-=======
-# @customers.route('/customers/<customerID>', methods=['DELETE'])  
->>>>>>> 788080b0eab7e27fb4f2cabbdaf3a07cbf25ee2f
+#@customers.route('/customers/<customerID>/<orders>', methods=['GET'])
