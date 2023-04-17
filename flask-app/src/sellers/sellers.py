@@ -11,7 +11,7 @@ def get_sellers():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT first_name, last_name, sellerID, phone, email1 FROM Products')
+    cursor.execute('SELECT first_name, last_name, sellerID, phone, email1 FROM Sellers')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
