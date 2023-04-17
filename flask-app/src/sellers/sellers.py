@@ -103,7 +103,7 @@ def add_post(sellerID):
 @sellers.route('/seller/<sellerID>/email', methods=['PUT'])
 def update_seller_email(sellerID):
     data = request.get_json()
-    email = data['email2']
+    email2 = data['email2']
 
     # update the email address for the seller in the database
     cursor = db.get_db().cursor()
@@ -112,7 +112,7 @@ def update_seller_email(sellerID):
         SET email2 = %s
         WHERE sellerID = {0}'.format(sellerID)
     '''
-    values = (email, sellerID)
+    values = (email2, sellerID)
     cursor.execute(query, values)
     db.get_db().commit()
 
