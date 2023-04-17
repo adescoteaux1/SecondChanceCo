@@ -108,9 +108,9 @@ def update_seller_email(sellerID):
     # update the email address for the seller in the database
     cursor = db.get_db().cursor()
     query = '''
-        UPDATE sellers
+        UPDATE Sellers
         SET email2 = %s
-        WHERE sellerID = {0}'.format(SellerID)
+        WHERE sellerID = {0}'.format(sellerID)
     '''
     values = (email, sellerID)
     cursor.execute(query, values)
@@ -126,8 +126,8 @@ def delete_seller(sellerID):
     # delete the seller from the database
     cursor = db.get_db().cursor()
     query = '''
-        DELETE FROM sellers
-        WHERE sellerID = {0}'.format(SellerID)
+        DELETE FROM Sellers
+        WHERE sellerID = {0}'.format(sellerID)
     '''
     values = (sellerID,)
     cursor.execute(query, values)
@@ -168,8 +168,8 @@ def delete_post(sellerID, productID):
     # delete the post from the database
     cursor = db.get_db().cursor()
     query = '''
-        DELETE FROM posts
-        WHERE productID = {0}'.format(ProductID) AND sellerID = {0}'.format(SellerID)
+        DELETE FROM Products
+        WHERE productID = {0}'.format(ProductID) AND sellerID = {0}'.format(sellerID)
     '''
     values = (productID, sellerID)
     cursor.execute(query, values)
