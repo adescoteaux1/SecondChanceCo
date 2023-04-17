@@ -1,3 +1,5 @@
+use SecondChanceDB;
+
 -- carts 
 INSERT INTO Cart(customerID,cartID,total_price) VALUES (15,1,42.37);
 INSERT INTO Cart(customerID,cartID,total_price) VALUES (4,2,35.05);
