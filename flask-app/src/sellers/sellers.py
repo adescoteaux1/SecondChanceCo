@@ -34,7 +34,7 @@ def get_sellers():
 @sellers.route('/seller/<sellerID>', methods=['GET'])
 def get_seller(sellerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from sellers where SellerID = {0}'.format(sellerID))
+    cursor.execute('select * from Sellers where SellerID = {0}'.format(sellerID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
