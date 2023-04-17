@@ -5,11 +5,11 @@ services:
 
   ##################################################################
   # configure the webserver container
-  web:
+  secondchance-web:
     
     # Set up the web server according to the Dockerfile inside the api/ folder
     build: flask-app/
-    container_name: web
+    container_name: secondchance-web
     # connect the src folder in on the host machine to the code folder in the container. 
     # note that the code folder in contaier is the working directory (see DockerFile).
     volumes: ['./flask-app:/code', './secrets:/secrets'] 
@@ -22,14 +22,14 @@ services:
       - "8001:4000"
 
     links:
-      - db
+      - secondchance-db
 
   ##################################################################
   # configure the mysql container
-  db:
+  secondchance-db:
     # We are using the base image of MySQL v.8
     image: mysql:8
-    container_name: db
+    container_name: secondchance-db
     volumes:
       # anything in (or mounted in) /docker-entrypoint-initdb.d in the container 
       # will automatically be executed when the container is created
@@ -57,9 +57,9 @@ services:
 
   ##################################################################
   # configure the AppSmith container (borrowed directly from Appsmith)
-  appsmith:
+  secondchance-appsmith:
     image: index.docker.io/appsmith/appsmith-ce
-    container_name: appsmith
+    container_name: secondchance-appsmith
     ports:
       - "8080:80"
       - "4443:443"
