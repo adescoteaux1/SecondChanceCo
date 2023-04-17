@@ -177,5 +177,5 @@ def delete_post(sellerID, productID):
     values = (productID, sellerID)
     cursor.execute(query, values)
     db.get_db().commit()
-    
+
     return jsonify({'message': 'Post deleted successfully'})
