@@ -360,7 +360,7 @@ INSERT INTO Sellers(sellerID,first_name,last_name,email1,email2,email3,city,stat
 INSERT INTO Sellers(sellerID,first_name,last_name,email1,email2,email3,city,state,country,zip,phone) VALUES (49,'Tuckie','Santo','tsanto1c@abc.net.au','tsanto1c@google.com.br','tsanto1c@google.com.hk','Flores da Cunha',NULL,'Brazil',95270000,'507-710-4142');
 INSERT INTO Sellers(sellerID,first_name,last_name,email1,email2,email3,city,state,country,zip,phone) VALUES (50,'Angus','Nias','anias1d@com.com','anias1d@dailymotion.com','anias1d@imdb.com','Punākha',NULL,'Bhutan',NULL,'130-697-2007');
 
---Payments
+-- Payments
 INSERT INTO Payments(paymentID,total_price,type,orderID,sellerID) VALUES (1,82.95,'jcb',27,28);
 INSERT INTO Payments(paymentID,total_price,type,orderID,sellerID) VALUES (2,98.51,'jcb',8,32);
 INSERT INTO Payments(paymentID,total_price,type,orderID,sellerID) VALUES (3,91.62,'visa-electron',26,38);
