@@ -48,14 +48,11 @@ def get_seller(sellerID):
 
 
 # get all the posts from a specific seller
-@sellers.route('/seller/<sellerID>/<post>', methods=['GET'])
+@sellers.route('/seller/<sellerID>/post', methods=['GET'])
 def get_most_posts(sellerID):
     cursor = db.get_db().cursor()
-    query = '''
-        SELECT product_name, unitPrice 
-        FROM products
-        WHERE sellerID = {0}'.format(SellerID)
-    '''
+    query = 'SELECT productID, product_name, descr, unitPrice FROM Products WHERE sellerID = {0}'.format(sellerID)
+    
     cursor.execute(query)
        # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
