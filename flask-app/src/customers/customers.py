@@ -68,7 +68,7 @@ def get_cart(customerID):
 
 # Get the total price of a customer's cart with particular customerID
 @customers.route('/customers/<customerID>/viewcart', methods=['GET'])
-def get_cart(customerID):
+def get_viewcart(customerID):
     cursor = db.get_db().cursor()
     cursor.execute('select * from Cart where customerID = {0}'.format(customerID))
     row_headers = [x[0] for x in cursor.description]
