@@ -66,11 +66,18 @@ def get_cart(customerID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get the total price of a customer's cart with particular customerID
+# View customer's cart with particular customerID
 @customers.route('/customers/<customerID>/viewcart', methods=['GET'])
 def get_viewcart(customerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from Cart where customerID = {0}'.format(customerID))
+    query = '''SELECT pc.productID AS "Product ID", P.product_name AS "Name", P.descr AS "Description", P.picture AS "Link to Photo"
+    FROM Cart
+    JOIN prod_carts pc on Cart.cartID = pc.cartID
+    JOIN Products P on pc.productID = P.productID
+    where customerID = %s
+    '''
+    values = (customerID)
+    cursor.execute(query, values)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
