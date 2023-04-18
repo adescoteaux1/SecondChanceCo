@@ -343,5 +343,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "7090d7f7-efdb-4309-9635-4d04f1ed5254",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "Delete Seller #50",
+    "url": "localhost:8001/s/seller/50",
+    "method": "DELETE",
+    "sortNum": 240000,
+    "created": "2023-04-18T19:30:05.333Z",
+    "modified": "2023-04-18T19:30:20.481Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
