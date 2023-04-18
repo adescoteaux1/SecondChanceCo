@@ -39,9 +39,13 @@ def get_customer(customerID):
 # Delete a customer with a particular customerID
 @customers.route('/customers/<customerID>', methods=['DELETE'])
 def customer_delete(customerID):
+    # delete customer from database
     cursor = db.get_db().cursor()
-    query = 'DELETE FROM Customers WHERE customerID = %s'
-    values = (customerID)
+    query = ''' 
+    DELETE FROM Customers 
+    WHERE customerID = %s
+    ''' 
+    values = (customerID,)
     cursor.execute(query, values)
     db.get_db().commit()
 
