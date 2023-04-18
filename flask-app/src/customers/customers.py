@@ -111,17 +111,6 @@ def get_orders(customerID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Delete a customer with the specified customerID
-@customers.route('/customers/<customerID>', methods=['DELETE'])
-def delete_customer(customerID,):
-    cursor = db.get_db().cursor()
-    query = 'DELETE FROM customers customerID = {0}'.format(customerID)
-    values = (customerID,)
-    cursor.execute(query, values)
-    db.get_db().commit()
-
-    return jsonify({'message': 'Customer deleted successfully'})
-
 # adds a new order for a customer
 @customers.route('/customers/<customerID>/orders', methods=['POST'])
 def add_order(customerID):
