@@ -175,12 +175,13 @@ def update_customer_address(customerID):
     return jsonify({'message': 'Customer address updated successfully'})
 
 # Get all Products
-@customers.route('/customer/products', methods=['GET'])
+@customers.route('/customer/<products>', methods=['GET'])
 def get_products():
     cursor = db.get_db().cursor()
     cursor.execute('''
-        SLECET product_name, unitPrice, picture, descr, first_name, last_name
-        FROM Products join Sellers''')
+        SELECT product_name AS "Product Name", descr AS "Description", picture AS "Link to Photo", unitPrice AS "Price", first_name AS "First Name", last_name AS "Last Name"
+        FROM Products join Sellers
+        ''')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
