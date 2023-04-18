@@ -66,6 +66,21 @@ def get_cart(customerID):
     the_response.mimetype = 'application/json'
     return the_response
 
+# Get the total price of a customer's cart with particular customerID
+@customers.route('/customers/<customerID>/viewcart', methods=['GET'])
+def get_cart(customerID):
+    cursor = db.get_db().cursor()
+    cursor.execute('select * from Cart where customerID = {0}'.format(customerID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 # not sure if this works
 # add a new product into a customers cart
 @customers.route('/customers/<customerID>/cart', methods=['POST'])
