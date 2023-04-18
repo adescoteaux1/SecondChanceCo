@@ -123,13 +123,12 @@ def update_seller_email(sellerID):
 # This deleates a seller given a specific sellerID
 @sellers.route('/seller/<sellerID>', methods=['DELETE'])
 def delete_seller(sellerID):
-    # delete the seller from the database
     cursor = db.get_db().cursor()
     query = '''
-        DELETE FROM Sellers
-        WHERE sellerID = {0}'.format(sellerID)
+    DELETE FROM Sellers
+    WHERE sellerID = %s
     '''
-    values = (sellerID,)
+    values = (sellerID)
     cursor.execute(query, values)
     db.get_db().commit()
 
