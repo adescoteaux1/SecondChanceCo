@@ -40,5 +40,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "14cb7f9c-8ef6-461d-bed1-7a54064f0944",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/s/seller/17/email",
+    "url": "localhost:8001/s/seller/17/email",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-18T18:51:25.062Z",
+    "modified": "2023-04-18T18:51:25.062Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email2\":\"tpretley@newcompany.com\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
