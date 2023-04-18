@@ -113,24 +113,20 @@ def get_orders(customerID):
 @customers.route('/customers/<customerID>/orders', methods=['POST'])
 def add_order(customerID):
     data = request.get_json()
-    #statusID = data['statusID']
-    order_date = data['order_date']
     city = data['city']
     state = data['state']
     country = data['country']
     zip = data['unitPrice']
-    customerID = data['customerID']
-    managerID = data['managerID']
-    orderID = data['orderID']
+    # order -> product -> seller -> manager 
 
 
     # insert the new post into the database
     cursor = db.get_db().cursor()
     query = '''
-        INSERT INTO orders (statusID, order_date, city, state, country, zip, customerID, managerID, orderID)
+        INSERT INTO orders (statusID, city, state, country, zip, customerID)
         VALUES (%s, %s, %s, %s, %s, %s)
     '''
-    values = (0, order_date, city, state, country, zip, customerID, managerID, orderID)
+    values = (0, city, state, country, zip, customerID)
     cursor.execute(query, values)
     db.get_db().commit()
 
