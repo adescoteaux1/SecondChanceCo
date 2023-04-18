@@ -309,7 +309,7 @@ INSERT INTO Orders(statusID,city,state,country,zip,customerID) VALUES (false,'Ju
 INSERT INTO Orders(statusID,city,state,country,zip,customerID) VALUES (false,'Binangun',NULL,'Indonesia',NULL,1);
 
 -- Sellers
-INSERT INTO Sellers(first_name,last_name,email1,email2,email3,city,state,country,zip,phone) VALUES ('Andie','Kidds','akidds0@list-manage.com','akidds0@geocities.com','akidds0@meetup.com','Palmar de Varela',NULL,'Colombia',0830'589-293-0297');
+INSERT INTO Sellers(first_name,last_name,email1,email2,email3,city,state,country,zip,phone) VALUES ('Andie','Kidds','akidds0@list-manage.com','akidds0@geocities.com','akidds0@meetup.com','Palmar de Varela',NULL,'Colombia',0830,'589-293-0297');
 INSERT INTO Sellers(first_name,last_name,email1,email2,email3,city,state,country,zip,phone) VALUES ('Teresa','Robker','trobker1@is.gd','trobker1@hostgator.com','trobker1@creativecommons.org','Juan L. Lacaze',NULL,'Uruguay',NULL,'851-481-1129');
 INSERT INTO Sellers(first_name,last_name,email1,email2,email3,city,state,country,zip,phone) VALUES ('Billye','Waldera','bwaldera2@ameblo.jp','bwaldera2@odnoklassniki.ru','bwaldera2@paginegialle.it','Trieste','Friuli-Venezia Giulia','Italy',34141,'300-361-6193');
 INSERT INTO Sellers(first_name,last_name,email1,email2,email3,city,state,country,zip,phone) VALUES ('Marga','Avieson','mavieson3@loc.gov','mavieson3@joomla.org','mavieson3@utexas.edu','Vicente Guerrero','Guerrero','Mexico','40230','926-783-1994');
