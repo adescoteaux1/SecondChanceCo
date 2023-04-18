@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS Cart
     customerID  int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (cartID),
     CONSTRAINT fk_03 FOREIGN KEY (customerID)
-        references Customers (customerID)
+        references Customers (customerID) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS prod_carts

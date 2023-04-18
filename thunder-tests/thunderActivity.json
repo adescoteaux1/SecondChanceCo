@@ -12,5 +12,33 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "0353aa8f-b825-4709-accd-162eee341185",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/c/customers/1",
+    "url": "localhost:8001/c/customers/1",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T17:01:01.828Z",
+    "modified": "2023-04-18T17:01:01.828Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f072e087-4884-40fc-a9b3-50a7c0e26da2",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/c/customers/1",
+    "url": "localhost:8001/c/customers/1",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-18T17:01:04.770Z",
+    "modified": "2023-04-18T17:01:04.770Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

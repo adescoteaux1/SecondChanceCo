@@ -66,7 +66,6 @@ def get_cart(customerID):
     the_response.mimetype = 'application/json'
     return the_response
 
-
 # not sure if this works
 # add a new product into a customers cart
 @customers.route('/customers/<customerID>/cart', methods=['POST'])
@@ -88,7 +87,7 @@ def add_to_cart(customerID):
 def cart_product_delete(customerID, productID):
     cursor = db.get_db().cursor()
     query = '''
-    DELETE FROM cart join prod_carts 
+    DELETE FROM Cart join prod_carts 
     WHERE customerID = {0}'.format(customerID) and productID = {0}'.format(productID)
     '''
     values = (productID,)
