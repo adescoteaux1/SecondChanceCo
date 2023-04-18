@@ -337,9 +337,9 @@
     "name": "Update Seller 17 email2",
     "url": "localhost:8001/s/seller/17/email",
     "method": "PUT",
-    "sortNum": 230000,
+    "sortNum": 105000,
     "created": "2023-04-18T18:54:01.342Z",
-    "modified": "2023-04-18T18:54:01.342Z",
+    "modified": "2023-04-18T18:55:47.383Z",
     "headers": [],
     "params": [],
     "body": {
