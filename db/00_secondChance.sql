@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS Orders
     managerID  int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (orderID),
     CONSTRAINT fk_05 FOREIGN KEY (customerID)
-        references Customers (customerID),
+        references Customers (customerID) ON DELETE CASCADE,
     CONSTRAINT fk_06 FOREIGN KEY (managerID)
         references Manager (managerID)
 );
