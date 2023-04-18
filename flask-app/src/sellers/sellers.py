@@ -110,7 +110,7 @@ def update_seller_email(sellerID):
     query = '''
         UPDATE Sellers
         SET email2 = %s
-        WHERE sellerID = {0}'.format(sellerID)
+        WHERE sellerID = %s
     '''
     values = (email2, sellerID)
     cursor.execute(query, values)
