@@ -25,7 +25,7 @@ def get_customers():
 @customers.route('/customers/<customerID>', methods=['GET'])
 def get_customer(customerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from customers where customerID = {0}'.format(customerID))
+    cursor.execute('select * from Customers where customerID = {0}'.format(customerID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -40,18 +40,18 @@ def get_customer(customerID):
 @customers.route('/customers/<customerID>', methods=['DELETE'])
 def customer_delete(customerID):
     cursor = db.get_db().cursor()
-    query = 'DELETE FROM customers WHERE customerID = {0}'.format(customerID)
-    values = (customerID,)
+    query = 'DELETE FROM Customers WHERE customerID = %s'
+    values = (customerID)
     cursor.execute(query, values)
     db.get_db().commit()
 
     return jsonify({'message': 'Customer deleted successfully'})
 
 # Get the total price of a customer's cart with particular customerID
-@customers.route('/customers/<customerID>/<cart>', methods=['GET'])
+@customers.route('/customers/<customerID>/cart', methods=['GET'])
 def get_cart(customerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select total_price from cart where customerID = {0}'.format(customerID))
+    cursor.execute('select total_price from Cart where customerID = {0}'.format(customerID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -94,10 +94,10 @@ def cart_product_delete(customerID, productID):
     return jsonify({'message': 'Item deleted from cart successfully'})
 
 # Get a specific customers orders
-@customers.route('/customers/<customerID>/<orders>', methods=['GET'])
+@customers.route('/customers/<customerID>/orders', methods=['GET'])
 def get_orders(customerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select orderID from orders where customerID = {0}'.format(customerID))
+    cursor.execute('select orderID from Orders where customerID = {0}'.format(customerID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -123,7 +123,7 @@ def delete_customer(customerID,):
 @customers.route('/customers/<customerID>/orders', methods=['POST'])
 def add_order(customerID):
     data = request.get_json()
-    statusID = data['statusID']
+    #statusID = data['statusID']
     order_date = data['order_date']
     city = data['city']
     state = data['state']
@@ -140,7 +140,7 @@ def add_order(customerID):
         INSERT INTO orders (statusID, order_date, city, state, country, zip, customerID, managerID, orderID)
         VALUES (%s, %s, %s, %s, %s, %s)
     '''
-    values = (statusID, order_date, city, state, country, zip, customerID, managerID, orderID)
+    values = (0, order_date, city, state, country, zip, customerID, managerID, orderID)
     cursor.execute(query, values)
     db.get_db().commit()
 
