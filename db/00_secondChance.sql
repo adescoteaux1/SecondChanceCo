@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS Products
     descr        varchar(200),
     picture      varchar(100),
     CONSTRAINT pk PRIMARY KEY (productID),
-    CONSTRAINT fk_10 FOREIGN KEY (sellerID) ON DELETE CASCADE 
-        references Sellers (sellerID)
+    CONSTRAINT fk_10 FOREIGN KEY (sellerID)
+        references Sellers (sellerID) ON DELETE CASCADE 
 );
 
 CREATE TABLE IF NOT EXISTS Cart
