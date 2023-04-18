@@ -191,5 +191,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "4a681729-e401-4caf-aa70-0df2cbbb0bff",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/s/sellers",
+    "url": "localhost:8001/s/sellers",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T15:41:33.852Z",
+    "modified": "2023-04-18T15:41:33.852Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
