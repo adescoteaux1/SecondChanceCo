@@ -72,7 +72,6 @@ def add_to_cart(customerID):
     # cartID = data['cartID']
 
     cursor = db.get_db().cursor()
-
     query = 'INSERT INTO prod_carts (productID, cartID) VALUES (%s, (SELECT cartID FROM Cart WHERE customerID = {0}))'.format(customerID)
     values = (productID,)
     cursor.execute(query, values)
