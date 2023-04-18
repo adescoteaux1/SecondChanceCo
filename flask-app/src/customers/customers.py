@@ -175,7 +175,7 @@ def update_customer_address(customerID):
     return jsonify({'message': 'Customer address updated successfully'})
 
 # Get all Products
-@customers.route('/customers/products', methods=['GET'])
+@customers.route('/customer/products', methods=['GET'])
 def get_products():
     cursor = db.get_db().cursor()
     cursor.execute('select product_name, unitPrice, picture, descr, first_name, last_name\
