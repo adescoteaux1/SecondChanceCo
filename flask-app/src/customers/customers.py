@@ -70,14 +70,15 @@ def add_to_cart(customerID):
     data = request.get_json()
     productID = data['productID']
     # cartID = data['cartID']
-    cartID = int('Select cartID from Cart WHERE customerID = {0}'.format(customerID))
+    cartID = 'SELECT CAST(cartID AS SIGNED) FROM Cart WHERE customerID = {0}'.format(customerID)
 
     cursor = db.get_db().cursor()
 
     query = '''
         INSERT INTO prod_carts (productID, cartID)
-        VALUES (%i, %i)
+        VALUES (%s, %s)
     '''
+    cursor.execute(cartID)
     values = (productID, cartID)
     cursor.execute(query, values)
     db.get_db().commit()
