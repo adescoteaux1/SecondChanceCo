@@ -329,5 +329,24 @@
     "created": "2023-04-18T15:48:15.909Z",
     "modified": "2023-04-18T15:48:15.909Z",
     "headers": []
+  },
+  {
+    "_id": "7791f7ff-3c05-4887-a495-93af498072e5",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "Update Seller 17 email2",
+    "url": "localhost:8001/s/seller/17/email",
+    "method": "PUT",
+    "sortNum": 230000,
+    "created": "2023-04-18T18:54:01.342Z",
+    "modified": "2023-04-18T18:54:01.342Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email2\":\"tpretley@newcompany.com\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

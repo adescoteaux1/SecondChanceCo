@@ -45,7 +45,7 @@
     "_id": "14cb7f9c-8ef6-461d-bed1-7a54064f0944",
     "colId": "history",
     "containerId": "",
-    "name": "localhost:8001/s/seller/17/email",
+    "name": "Update Seller 17 email2",
     "url": "localhost:8001/s/seller/17/email",
     "method": "PUT",
     "sortNum": 0,
