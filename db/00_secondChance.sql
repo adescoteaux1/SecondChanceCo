@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS prod_carts
     CONSTRAINT fk_04 FOREIGN KEY (cartID)
         references Cart (cartID),
     CONSTRAINT fk_07 FOREIGN KEY (productID)
-        references Products (productID)
+        references Products (productID) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Clothing_Type
