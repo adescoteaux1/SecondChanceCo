@@ -57,12 +57,9 @@ CREATE TABLE IF NOT EXISTS Orders
     country    varchar(50),
     zip        int,
     customerID int NOT NULL,
-    managerID  int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (orderID),
     CONSTRAINT fk_05 FOREIGN KEY (customerID)
-        references Customers (customerID) ON DELETE CASCADE,
-    CONSTRAINT fk_06 FOREIGN KEY (managerID)
-        references Manager (managerID)
+        references Customers (customerID) ON DELETE CASCADE
 );
 
 
