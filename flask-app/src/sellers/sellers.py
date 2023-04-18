@@ -78,7 +78,6 @@ def get_most_posts(sellerID):
 @sellers.route('/seller/<sellerID>/products', methods=['POST'])
 def add_post(sellerID):
     data = request.get_json()
-    productID = data['productID']
     picture = data['picture']
     descr = data['descr']
     product_name = data['product_name']
@@ -88,10 +87,10 @@ def add_post(sellerID):
     # insert the new post into the database
     cursor = db.get_db().cursor()
     query = '''
-        INSERT INTO Products (productID, picture, descr, sellerID, product_name, unitPrice)
+        INSERT INTO Products (picture, descr, sellerID, product_name, unitPrice)
         VALUES (%s, %s, %s, %s, %s, %s)
     '''
-    values = (productID, picture, descr, sellerID, product_name, unitPrice)
+    values = (picture, descr, sellerID, product_name, unitPrice)
     cursor.execute(query, values)
     db.get_db().commit()
 
