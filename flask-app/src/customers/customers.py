@@ -117,9 +117,6 @@ def add_order(customerID):
     state = data['state']
     country = data['country']
     zip = data['unitPrice']
-    # order -> product -> seller -> manager 
-
-
     # insert the new post into the database
     cursor = db.get_db().cursor()
     query = '''
