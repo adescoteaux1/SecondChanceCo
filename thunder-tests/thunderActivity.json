@@ -59,5 +59,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "3f57125c-fdfc-40bb-b46c-9feb4a10095a",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/s/sellers/1",
+    "url": "localhost:8001/s/sellers/1",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-18T18:55:01.571Z",
+    "modified": "2023-04-18T18:55:01.571Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
