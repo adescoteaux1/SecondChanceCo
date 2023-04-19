@@ -10,7 +10,7 @@ customers = Blueprint('customers', __name__)
 def get_customers():
     cursor = db.get_db().cursor()
     cursor.execute('select first_name, last_name, customerID\
-        , phone, email1 from Customers')
+        , phone, email1, city, state, country, zip from Customers')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -153,7 +153,7 @@ def add_order(customerID):
 
 
 # update address of the customer
-@customers.route('/customer/<customerID>/email', methods=['PUT'])
+@customers.route('/customers/<customerID>/email', methods=['PUT'])
 def update_customer_address(customerID):
     data = request.get_json()
     city = data['city']
@@ -175,19 +175,25 @@ def update_customer_address(customerID):
     return jsonify({'message': 'Customer address updated successfully'})
 
 # Get all Products
-@customers.route('/customer/<products>', methods=['GET'])
-def get_products():
-    cursor = db.get_db().cursor()
+@customers.route('/customers/<customerID>/products', methods=['GET'])
+def get_products(customerID):
+    cursor = db.cursor()
     cursor.execute('''
-        SELECT product_name AS "Product Name", descr AS "Description", picture AS "Link to Photo", unitPrice AS "Price", first_name AS "First Name", last_name AS "Last Name"
-        FROM Products join Sellers
-        ''')
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
+        SELECT 
+    Products.product_name AS "Product Name", 
+    Products.descr AS "Description", 
+    Products.picture AS "Link to Photo", 
+    Products.unitPrice AS "Price", 
+    Sellers.first_name AS "First Name", 
+    Sellers.last_name AS "Last Name"
+FROM 
+    Customers
+    JOIN Cart ON Customers.customerID = Cart.customerID
+    JOIN prod_carts ON Cart.cartID = prod_carts.cartID
+    JOIN Products ON prod_carts.productID = Products.productID
+    JOIN Sellers ON Products.sellerID = Sellers.sellerID
+WHERE 
+    Customers.customerID = %s;
+    ''', (customerID,))
+    result = cursor.fetchall()
+    return jsonify(result) 
