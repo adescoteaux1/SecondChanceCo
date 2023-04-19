@@ -109,7 +109,7 @@ def get_cart(customerID):
 @customers.route('/customers/<customerID>/viewcart', methods=['GET'])
 def get_viewcart(customerID):
     cursor = db.get_db().cursor()
-    query = '''SELECT pc.productID AS "Product ID", P.product_name AS "Name", P.descr AS "Description", P.picture AS "Photolink", P.unitPrice AS "uPrice"
+    query = '''SELECT pc.productID AS "ProductID", P.product_name AS "Name", P.descr AS "Description", P.picture AS "Photolink", P.unitPrice AS "uPrice"
     FROM Cart
     JOIN prod_carts pc on Cart.cartID = pc.cartID
     JOIN Products P on pc.productID = P.productID
