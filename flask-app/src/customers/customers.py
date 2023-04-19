@@ -70,7 +70,7 @@ def customer_namepairs():
     return the_response
 
 @customers.route('/customers/products/namepairs', methods=['GET'])
-def customer_namepairs():
+def product_namepairs():
     cursor = db.get_db().cursor()
     query = ''' 
     SELECT productID as value, product_name as label
@@ -142,14 +142,14 @@ def add_to_cart(customerID):
     return jsonify({'message': 'Product added successfully'})
 
 # Delete a product from a customers cart
-@customers.route('/customers/<customerID>/<cart>/<productID>', methods=['DELETE'])
+@customers.route('/customers/<customerID>/cart/<productID>', methods=['DELETE'])
 def cart_product_delete(customerID, productID):
     cursor = db.get_db().cursor()
     query = '''
     DELETE FROM Cart join prod_carts 
-    WHERE customerID = {0}'.format(customerID) and productID = {0}'.format(productID)
+    WHERE customerID = %s and productID = %s
     '''
-    values = (productID,)
+    values = (customerID, productID)
     cursor.execute(query, values)
     db.get_db().commit()
 
