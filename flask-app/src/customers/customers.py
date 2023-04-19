@@ -51,11 +51,72 @@ def customer_delete(customerID):
 
     return jsonify({'message': 'Customer deleted successfully'})
 
+@customers.route('/customers/namepairs', methods=['GET'])
+def customer_namepairs():
+    cursor = db.get_db().cursor()
+    query = ''' 
+    SELECT customerID as value, first_name as label
+    From Customers 
+    ''' 
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+@customers.route('/customers/products/namepairs', methods=['GET'])
+def product_namepairs():
+    cursor = db.get_db().cursor()
+    query = ''' 
+    SELECT productID as value, product_name as label
+    From Products 
+    ''' 
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []s
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+
 # Get the total price of a customer's cart with particular customerID
 @customers.route('/customers/<customerID>/cart', methods=['GET'])
 def get_cart(customerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select total_price from Cart where customerID = {0}'.format(customerID))
+    query = '''SELECT total_price AS "Total" from Cart where customerID = %s''';
+    values = (customerID)
+    cursor.execute(query, values)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# View customer's cart with particular customerID
+@customers.route('/customers/<customerID>/viewcart', methods=['GET'])
+def get_viewcart(customerID):
+    cursor = db.get_db().cursor()
+    query = '''SELECT pc.productID AS "Product ID", P.product_name AS "Name", P.descr AS "Description", P.picture AS "Photolink", P.unitPrice AS "uPrice"
+    FROM Cart
+    JOIN prod_carts pc on Cart.cartID = pc.cartID
+    JOIN Products P on pc.productID = P.productID
+    where customerID = %s
+    '''
+    values = (customerID)
+    cursor.execute(query, values)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -72,8 +133,6 @@ def get_cart(customerID):
 def add_to_cart(customerID):
     data = request.get_json()
     productID = data['productID']
-    # cartID = data['cartID']
-
     cursor = db.get_db().cursor()
     query = 'INSERT INTO prod_carts (productID, cartID) VALUES (%s, (SELECT cartID FROM Cart WHERE customerID = {0}))'.format(customerID)
     values = (productID,)
@@ -83,14 +142,14 @@ def add_to_cart(customerID):
     return jsonify({'message': 'Product added successfully'})
 
 # Delete a product from a customers cart
-@customers.route('/customers/<customerID>/<cart>/<productID>', methods=['DELETE'])
+@customers.route('/customers/<customerID>/cart/<productID>', methods=['DELETE'])
 def cart_product_delete(customerID, productID):
     cursor = db.get_db().cursor()
     query = '''
     DELETE FROM Cart join prod_carts 
-    WHERE customerID = {0}'.format(customerID) and productID = {0}'.format(productID)
+    WHERE customerID = %s and productID = %s
     '''
-    values = (productID,)
+    values = (customerID, productID)
     cursor.execute(query, values)
     db.get_db().commit()
 
@@ -115,24 +174,17 @@ def get_orders(customerID):
 @customers.route('/customers/<customerID>/orders', methods=['POST'])
 def add_order(customerID):
     data = request.get_json()
-    #statusID = data['statusID']
-    order_date = data['order_date']
     city = data['city']
     state = data['state']
     country = data['country']
     zip = data['unitPrice']
-    customerID = data['customerID']
-    managerID = data['managerID']
-    orderID = data['orderID']
-
-
     # insert the new post into the database
     cursor = db.get_db().cursor()
     query = '''
-        INSERT INTO orders (statusID, order_date, city, state, country, zip, customerID, managerID, orderID)
+        INSERT INTO orders (statusID, city, state, country, zip, customerID)
         VALUES (%s, %s, %s, %s, %s, %s)
     '''
-    values = (0, order_date, city, state, country, zip, customerID, managerID, orderID)
+    values = (0, city, state, country, zip, customerID)
     cursor.execute(query, values)
     db.get_db().commit()
 
@@ -146,17 +198,33 @@ def update_customer_address(customerID):
     city = data['city']
     state = data['state']
     country = data['country']
-    zip = data['unitPrice']
+    zip = data['zip']
 
     # update the address for the customer in the database
     cursor = db.get_db().cursor()
     query = '''
-        UPDATE customers
+        UPDATE Customers
         SET city = %s, state = %s, country = %s, zip = %s
-        WHERE customerID = {0}'.format(customerID)
+        WHERE customerID = %s 
     '''
     values = (city, state, country, zip, customerID)
     cursor.execute(query, values)
     db.get_db().commit()
 
     return jsonify({'message': 'Customer address updated successfully'})
+
+# Get all Products
+@customers.route('/customer/products', methods=['GET'])
+def get_products():
+    cursor = db.get_db().cursor()
+    cursor.execute('select productID, product_name, descr, picture, unitPrice, first_name, last_name\
+    from Products join Sellers using (sellerID)')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response

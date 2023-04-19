@@ -4,7 +4,7 @@ USE SecondChanceDB;
 
 CREATE TABLE IF NOT EXISTS Manager
 (
-    managerID  int         NOT NULL,
+    managerID  int         NOT NULL AUTO_INCREMENT,
     first_name varchar(50) NOT NULL,
     last_name  varchar(50) NOT NULL,
     phone      varchar(50) NOT NULL UNIQUE,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS Customers
     email1     varchar(50) UNIQUE,
     email2     varchar(50) UNIQUE,
     email3     varchar(50) UNIQUE,
-    customerID int         NOT NULL,
+    customerID int         NOT NULL AUTO_INCREMENT,
     first_name varchar(50) NOT NULL,
     last_name  varchar(50) NOT NULL,
     phone      varchar(50) UNIQUE,
@@ -50,25 +50,22 @@ CREATE TABLE IF NOT EXISTS Customers
 CREATE TABLE IF NOT EXISTS Orders
 (
     statusID   BOOLEAN,
-    orderID    int NOT NULL,
+    orderID    int NOT NULL AUTO_INCREMENT,
     order_date datetime DEFAULT CURRENT_TIMESTAMP,
     city       varchar(50),
     state      varchar(50),
     country    varchar(50),
     zip        int,
     customerID int NOT NULL,
-    managerID  int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (orderID),
     CONSTRAINT fk_05 FOREIGN KEY (customerID)
-        references Customers (customerID) ON DELETE CASCADE,
-    CONSTRAINT fk_06 FOREIGN KEY (managerID)
-        references Manager (managerID)
+        references Customers (customerID) ON DELETE CASCADE
 );
 
 
 CREATE TABLE IF NOT EXISTS Sellers
 (
-    sellerID   int         NOT NULL,
+    sellerID   int         NOT NULL AUTO_INCREMENT,
     first_name varchar(50) NOT NULL,
     last_name  varchar(50) NOT NULL,
     city       varchar(50),
@@ -84,7 +81,7 @@ CREATE TABLE IF NOT EXISTS Sellers
 
 CREATE TABLE IF NOT EXISTS Payments
 (
-    paymentID    int NOT NULL,
+    paymentID    int NOT NULL AUTO_INCREMENT,
     total_price  int,
     type         varchar(50),
     payment_date datetime DEFAULT CURRENT_TIMESTAMP,
@@ -100,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Payments
 
 CREATE TABLE IF NOT EXISTS Products
 (
-    productID    int         NOT NULL,
+    productID    int         NOT NULL AUTO_INCREMENT,
     unitPrice    double,
     product_name varchar(50) NOT NULL,
     sellerID     int         NOT NULL,
@@ -114,7 +111,7 @@ CREATE TABLE IF NOT EXISTS Products
 CREATE TABLE IF NOT EXISTS Cart
 (
     total_price double,
-    cartID      int,
+    cartID      int AUTO_INCREMENT,
     customerID  int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (cartID),
     CONSTRAINT fk_03 FOREIGN KEY (customerID)
@@ -135,7 +132,7 @@ CREATE TABLE IF NOT EXISTS prod_carts
 CREATE TABLE IF NOT EXISTS Clothing_Type
 (
     clothing_name varchar(50) NOT NULL,
-    typeID        int         NOT NULL,
+    typeID        int         NOT NULL AUTO_INCREMENT,
     productID     int         NOT NULL,
     CONSTRAINT pk PRIMARY KEY (typeID),
     CONSTRAINT fk_11 FOREIGN KEY (productID)
