@@ -78,7 +78,7 @@ def product_namepairs():
     ''' 
     cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
-    json_data = []s
+    json_data = []
     theData = cursor.fetchall()
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
