@@ -146,14 +146,14 @@ def update_customer_address(customerID):
     city = data['city']
     state = data['state']
     country = data['country']
-    zip = data['unitPrice']
+    zip = data['zip']
 
     # update the address for the customer in the database
     cursor = db.get_db().cursor()
     query = '''
-        UPDATE customers
+        UPDATE Customers
         SET city = %s, state = %s, country = %s, zip = %s
-        WHERE customerID = {0}'.format(customerID)
+        WHERE customerID = %s 
     '''
     values = (city, state, country, zip, customerID)
     cursor.execute(query, values)

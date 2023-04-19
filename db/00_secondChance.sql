@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS Payments
 CREATE TABLE IF NOT EXISTS Products
 (
     productID    int         NOT NULL,
-    unitPrice    double,
+    unitPrice    double, 
     product_name varchar(50) NOT NULL,
     sellerID     int         NOT NULL,
     descr        varchar(200),

@@ -73,5 +73,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "40d695ee-cf2e-4c2c-8ff0-6d7e9548f0a7",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/c/customer/1/email",
+    "url": "localhost:8001/c/customer/1/email",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-19T03:56:12.759Z",
+    "modified": "2023-04-19T04:05:01.168Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"city\": \"New York\",\n  \"state\": \"NY\",\n  \"country\": \"USA\",\n  \"zip\": \"10001\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
