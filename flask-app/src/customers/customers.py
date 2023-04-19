@@ -179,17 +179,33 @@ def update_customer_address(customerID):
     city = data['city']
     state = data['state']
     country = data['country']
-    zip = data['unitPrice']
+    zip = data['zip']
 
     # update the address for the customer in the database
     cursor = db.get_db().cursor()
     query = '''
-        UPDATE customers
+        UPDATE Customers
         SET city = %s, state = %s, country = %s, zip = %s
-        WHERE customerID = {0}'.format(customerID)
+        WHERE customerID = %s 
     '''
     values = (city, state, country, zip, customerID)
     cursor.execute(query, values)
     db.get_db().commit()
 
     return jsonify({'message': 'Customer address updated successfully'})
+
+# Get all Products
+@customers.route('/customer/products', methods=['GET'])
+def get_products():
+    cursor = db.get_db().cursor()
+    cursor.execute('select product_name, descr, picture, unitPrice, first_name, last_name\
+    from Products join Sellers')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
