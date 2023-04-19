@@ -75,7 +75,9 @@ def customer_namepairs():
 @customers.route('/customers/<customerID>/cart', methods=['GET'])
 def get_cart(customerID):
     cursor = db.get_db().cursor()
-    cursor.execute('select total_price from Cart where customerID = {0}'.format(customerID))
+    query = '''SELECT total_price AS "Total" from Cart where customerID = %s''';
+    values = (customerID)
+    cursor.execute(query, values)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
