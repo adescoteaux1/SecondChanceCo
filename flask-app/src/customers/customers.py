@@ -134,7 +134,7 @@ def add_to_cart(customerID):
     data = request.get_json()
     productID = data['productID']
     cursor = db.get_db().cursor()
-    query = 'INSERT INTO prod_carts (productID, cartID) VALUES (%i, (SELECT cartID FROM Cart WHERE customerID = {0}))'.format(customerID)
+    query = 'INSERT INTO prod_carts (productID, cartID) VALUES (%s, (SELECT cartID FROM Cart WHERE customerID = {0}))'.format(customerID)
     values = (productID,)
     cursor.execute(query, values)
     db.get_db().commit()
