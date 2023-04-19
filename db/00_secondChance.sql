@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Orders
     customerID int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (orderID),
     CONSTRAINT fk_05 FOREIGN KEY (customerID)
-        references Customers (customerID) ON DELETE CASCADE
+        references Customers (customerID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS Payments
     CONSTRAINT fk_08 FOREIGN KEY (orderID)
         references Orders (OrderID),
     CONSTRAINT fk_09 FOREIGN KEY (sellerID)
-        references Sellers (sellerID) ON DELETE CASCADE 
+        references Sellers (sellerID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS Products
     picture      varchar(100),
     CONSTRAINT pk PRIMARY KEY (productID),
     CONSTRAINT fk_10 FOREIGN KEY (sellerID)
-        references Sellers (sellerID) ON DELETE CASCADE 
+        references Sellers (sellerID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Cart
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS Cart
     customerID  int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (cartID),
     CONSTRAINT fk_03 FOREIGN KEY (customerID)
-        references Customers (customerID) ON DELETE CASCADE
+        references Customers (customerID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS prod_carts
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS prod_carts
     CONSTRAINT fk_04 FOREIGN KEY (cartID)
         references Cart (cartID),
     CONSTRAINT fk_07 FOREIGN KEY (productID)
-        references Products (productID) ON DELETE CASCADE
+        references Products (productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Clothing_Type
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS Clothing_Type
     productID     int         NOT NULL,
     CONSTRAINT pk PRIMARY KEY (typeID),
     CONSTRAINT fk_11 FOREIGN KEY (productID)
-        references Products (productID) ON DELETE CASCADE 
+        references Products (productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS prod_order
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS prod_order
     orderID   int NOT NULL,
     CONSTRAINT pk PRIMARY KEY (orderID, productID),
     CONSTRAINT fk_12 FOREIGN KEY (productID)
-        references Products (productID) ON DELETE CASCADE,
+        references Products (productID) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_13 FOREIGN KEY (orderID)
         references Orders (OrderID)
 );
