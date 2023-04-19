@@ -70,6 +70,25 @@ def customer_namepairs():
     the_response.mimetype = 'application/json'
     return the_response
 
+# Delete a customer with a particular customerID
+@customers.route('/customers/products/namepairs', methods=['GET'])
+def customer_namepairs():
+    cursor = db.get_db().cursor()
+    query = ''' 
+    SELECT productID as value, product_name as label
+    From Products 
+    ''' 
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []s
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 
 # Get the total price of a customer's cart with particular customerID
 @customers.route('/customers/<customerID>/cart', methods=['GET'])
