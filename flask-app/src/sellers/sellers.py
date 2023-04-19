@@ -72,8 +72,6 @@ def get_most_posts(sellerID):
     return jsonify(json_data)
 
 
-
-
 #This adds a new post for a seller
 @sellers.route('/seller/<sellerID>/products', methods=['POST'])
 def add_post(sellerID):
@@ -96,8 +94,6 @@ def add_post(sellerID):
     db.get_db().commit()
 
     return jsonify({'message': 'Post added successfully'})
-
-
 
 # update email2 of the seller
 @sellers.route('/seller/<sellerID>/email', methods=['PUT'])
@@ -133,7 +129,6 @@ def delete_seller(sellerID):
     db.get_db().commit()
 
     return jsonify({'message': 'Seller deleted successfully'})
-
 
 # update post name, price, and decription
 @sellers.route('/seller/<sellerID>/posts/<productID>', methods=['PUT'])
