@@ -73,5 +73,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "ca734e37-4196-46f9-9c0d-e99af4ad8356",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/c/csutomers/1",
+    "url": "localhost:8001/c/csutomers/1",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T22:49:31.033Z",
+    "modified": "2023-04-19T22:49:31.033Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
