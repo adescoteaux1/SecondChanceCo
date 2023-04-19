@@ -50,7 +50,7 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-04-18T15:48:15.890Z",
-    "modified": "2023-04-18T20:16:19.181Z",
+    "modified": "2023-04-18T15:48:15.890Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -368,6 +368,20 @@
     "sortNum": 250000,
     "created": "2023-04-18T20:05:21.886Z",
     "modified": "2023-04-18T20:05:29.590Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f5cd40b7-dae6-4762-a079-20f340eec04d",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "Customer Products",
+    "url": "localhost:8001/c/customer/products",
+    "method": "GET",
+    "sortNum": 260000,
+    "created": "2023-04-19T21:06:32.382Z",
+    "modified": "2023-04-19T21:06:50.544Z",
     "headers": [],
     "params": [],
     "tests": []
