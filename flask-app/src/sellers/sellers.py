@@ -86,7 +86,7 @@ def add_post(sellerID):
     cursor = db.get_db().cursor()
     query = '''
         INSERT INTO Products (picture, descr, sellerID, product_name, unitPrice)
-        VALUES (%s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %d)
     '''
     values = (picture, descr, sellerID, product_name, unitPrice)
     cursor.execute(query, values)
