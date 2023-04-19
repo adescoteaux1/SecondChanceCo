@@ -179,9 +179,9 @@ def update_customer_address(customerID):
 def get_products():
     cursor = db.get_db().cursor()
     cursor.execute('''
-        SELECT product_name AS "Product Name", descr AS "Description", picture AS "Link to Photo", unitPrice AS "Price", first_name AS "First Name", last_name AS "Last Name"
-        FROM Products join Sellers
-        ''')
+    select product_name AS "Product Name", descr AS "Description", picture AS "Link to Photo", unitPrice AS "Price", first_name AS "First Name", last_name AS "Last Name"
+    from Products join Sellers
+    ''')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -191,3 +191,4 @@ def get_products():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
