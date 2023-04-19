@@ -145,9 +145,8 @@ def add_to_cart(customerID):
 @customers.route('/customers/<customerID>/cart/<productID>', methods=['DELETE'])
 def cart_product_delete(customerID, productID):
     cursor = db.get_db().cursor()
-    query = '''
-    DELETE FROM Cart join prod_carts 
-    WHERE customerID = %s and productID = %s
+    query = '''DELETE FROM prod_carts
+    WHERE cartID = (SELECT Cart.cartID FROM Cart where customerID = %s) and productID = %s;
     '''
     values = (customerID, productID)
     cursor.execute(query, values)

@@ -391,18 +391,32 @@
     "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
     "containerId": "",
     "name": "Customer add product to cart",
-    "url": "localhost:8001/c/customers/1/cart",
+    "url": "localhost:8001/c/customers/2/cart",
     "method": "POST",
     "sortNum": 270000,
     "created": "2023-04-19T22:39:51.376Z",
-    "modified": "2023-04-19T22:47:00.837Z",
+    "modified": "2023-04-19T23:26:46.141Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"productID\":43\n}",
+      "raw": "{\n  \"productID\":10\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "f4e94513-1f8f-4cb0-b81c-e0e7be2fc8b8",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "Delete product from cart",
+    "url": "localhost:8001/c/customers/2/cart/10",
+    "method": "DELETE",
+    "sortNum": 280000,
+    "created": "2023-04-19T23:11:40.525Z",
+    "modified": "2023-04-19T23:12:26.545Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
