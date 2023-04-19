@@ -178,10 +178,8 @@ def update_customer_address(customerID):
 @customers.route('/customer/products', methods=['GET'])
 def get_products():
     cursor = db.get_db().cursor()
-    cursor.execute('''
-    select product_name, descr, picture, unitPrice, first_name, last_name
-    from Products join Sellers
-    ''')
+    cursor.execute('select product_name, descr, picture, unitPrice, first_name, last_name\
+    from Products join Sellers')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
