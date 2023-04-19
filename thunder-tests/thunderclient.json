@@ -385,5 +385,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "af51e0de-2db4-4a31-adae-47f83e1e5fc2",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "Customer add product to cart",
+    "url": "localhost:8001/c/customers/1/cart",
+    "method": "POST",
+    "sortNum": 270000,
+    "created": "2023-04-19T22:39:51.376Z",
+    "modified": "2023-04-19T22:41:17.775Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"productID\":55\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
