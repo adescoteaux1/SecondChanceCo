@@ -179,7 +179,7 @@ def update_customer_address(customerID):
 def get_products():
     cursor = db.get_db().cursor()
     cursor.execute('''
-    select product_name AS "Product Name", descr AS "Description", picture AS "Link to Photo", unitPrice AS "Price", first_name AS "First Name", last_name AS "Last Name"
+    select product_name, descr, picture, unitPrice, first_name, last_name
     from Products join Sellers
     ''')
     row_headers = [x[0] for x in cursor.description]
