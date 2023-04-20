@@ -94,7 +94,7 @@ def product_namepairs():
 @customers.route('/customers/<customerID>/cart', methods=['GET'])
 def get_cart(customerID):
     cursor = db.get_db().cursor()
-    query = '''SELECT round(sum(db.unitPrice), 2)
+    query = '''SELECT (round(sum(db.unitPrice), 2)) AS "TotalPrice"
     FROM (SELECT DISTINCT prod_carts.productID, unitPrice
     FROM prod_carts
     JOIN Products P on prod_carts.productID = P.productID
