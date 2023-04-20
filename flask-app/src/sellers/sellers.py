@@ -162,7 +162,7 @@ def delete_post(sellerID, productID):
     cursor = db.get_db().cursor()
     query = '''
         DELETE FROM Products
-        WHERE productID = {0}'.format(ProductID) AND sellerID = {0}'.format(sellerID)
+        WHERE productID = %s AND sellerID = %s
     '''
     values = (productID, sellerID)
     cursor.execute(query, values)
