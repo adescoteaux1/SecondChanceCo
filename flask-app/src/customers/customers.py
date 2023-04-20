@@ -197,7 +197,7 @@ def add_order(customerID):
 
 
 # update address of the customer
-@customers.route('/customers/<customerID>/email', methods=['PUT'])
+@customers.route('/customers/<customerID>/address', methods=['PUT'])
 def update_customer_address(customerID):
     data = request.get_json()
     city = data['city']
