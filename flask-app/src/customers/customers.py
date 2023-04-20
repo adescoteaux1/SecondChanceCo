@@ -51,6 +51,7 @@ def customer_delete(customerID):
 
     return jsonify({'message': 'Customer deleted successfully'})
 
+# Connects customer name and customer id 
 @customers.route('/customers/namepairs', methods=['GET'])
 def customer_namepairs():
     cursor = db.get_db().cursor()
@@ -69,6 +70,7 @@ def customer_namepairs():
     the_response.mimetype = 'application/json'
     return the_response
 
+# Connects product name and product id 
 @customers.route('/customers/products/namepairs', methods=['GET'])
 def product_namepairs():
     cursor = db.get_db().cursor()
