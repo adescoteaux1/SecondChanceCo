@@ -10,7 +10,7 @@ customers = Blueprint('customers', __name__)
 def get_customers():
     cursor = db.get_db().cursor()
     cursor.execute('select first_name, last_name, customerID\
-        , phone, email1 from Customers')
+        , phone, email1, city, state, country, zip from Customers')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -191,7 +191,7 @@ def add_order(customerID):
 
 
 # update address of the customer
-@customers.route('/customer/<customerID>/email', methods=['PUT'])
+@customers.route('/customers/<customerID>/email', methods=['PUT'])
 def update_customer_address(customerID):
     data = request.get_json()
     city = data['city']
