@@ -182,7 +182,7 @@ def add_order(customerID):
     city = data['city']
     state = data['state']
     country = data['country']
-    zip = data['unitPrice']
+    zip = data['zip']
     # insert the new post into the database
     cursor = db.get_db().cursor()
     query = '''
