@@ -578,5 +578,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "1da5cc18-c662-4b90-bf23-77f8c03e7886",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "seller update post",
+    "url": "localhost:8001/s/seller/2/posts/21",
+    "method": "PUT",
+    "sortNum": 390000,
+    "created": "2023-04-20T01:18:22.076Z",
+    "modified": "2023-04-20T01:22:20.111Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"descr\": \"Yellow skirt with dots\",\n    \"product_name\": \"Zath\",\n    \"unitPrice\": 99.77\n  }",
+      "form": []
+    },
+    "tests": []
   }
 ]

@@ -135,14 +135,14 @@ def update_post(sellerID, productID):
     data = request.get_json()
     product_name = data['product_name']
     unitPrice = data['unitPrice']
-    description = data['description']
+    description = data['descr']
 
     # update the post in the database
     cursor = db.get_db().cursor()
     query = '''
         UPDATE Products
-        SET product_name = %s, unitPrice = %s, description = %s
-        WHERE postID = %s AND sellerID = %s
+        SET product_name = %s, unitPrice = %s, descr = %s
+        WHERE productID = %s AND sellerID = %s
     '''
     values = (product_name, unitPrice, description, productID, sellerID)
     cursor.execute(query, values)
