@@ -169,3 +169,22 @@ def delete_post(sellerID, productID):
     db.get_db().commit()
 
     return jsonify({'message': 'Post deleted successfully'})
+
+# connects seller ID and seller name
+@sellers.route('/sellers/namepairs', methods=['GET'])
+def seller_namepairs():
+    cursor = db.get_db().cursor()
+    query = ''' 
+    SELECT sellerID as value, first_name as label
+    From Sellers 
+    ''' 
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
