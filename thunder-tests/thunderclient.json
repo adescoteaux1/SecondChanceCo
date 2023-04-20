@@ -606,5 +606,47 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "8022f629-ac36-4f00-9386-f9e98a02d962",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "Sellers namepairs",
+    "url": "localhost:8001/s/sellers/namepairs",
+    "method": "GET",
+    "sortNum": 410000,
+    "created": "2023-04-20T01:25:50.772Z",
+    "modified": "2023-04-20T01:26:14.417Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "323a64de-f83c-445c-b4c8-8eb347bfcd72",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "customers namepairs",
+    "url": "localhost:8001/c/customers/namepairs",
+    "method": "GET",
+    "sortNum": 420000,
+    "created": "2023-04-20T01:26:31.767Z",
+    "modified": "2023-04-20T01:26:45.288Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ab2ba040-b135-49e0-8746-8dd3c00c8149",
+    "colId": "ec0d59d3-8771-4ffb-a9cf-6acbc342dcd1",
+    "containerId": "",
+    "name": "Product namepairs",
+    "url": "localhost:8001/c/customers/products/namepairs",
+    "method": "GET",
+    "sortNum": 430000,
+    "created": "2023-04-20T01:26:55.087Z",
+    "modified": "2023-04-20T01:27:06.266Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
