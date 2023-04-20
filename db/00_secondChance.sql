@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Manager
     CONSTRAINT pk PRIMARY KEY (managerID),
     CONSTRAINT fk_1 FOREIGN KEY (reportsTo)
         references Manager (managerID)
-);
+); 
 
 CREATE TABLE IF NOT EXISTS man_reps
 (
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS Customers
     city       varchar(50),
     state      varchar(50),
     country    varchar(50),
-    zip        int,
+    zip        int NULL,
     managerID  int,
     CONSTRAINT pk PRIMARY KEY (customerID),
     CONSTRAINT fk_02 FOREIGN KEY (managerID)

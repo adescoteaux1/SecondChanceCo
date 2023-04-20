@@ -120,12 +120,12 @@
     "method": "POST",
     "sortNum": 80000,
     "created": "2023-04-18T15:48:15.895Z",
-    "modified": "2023-04-18T20:09:48.540Z",
+    "modified": "2023-04-20T00:12:18.003Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"productID\":55,\n  \"unitPrice\":4,\n  \"product_name\":\"Yellow\",\n  \"sellerID\":3,\n  \"descr\":\"Hi\",\n  \"picture\":\"www.com\"\n}",
+      "raw": "{\n  \"productID\":55,\n  \"unitPrice\":4,\n  \"product_name\":\"Yellow\",\n  \"sellerID\":37,\n  \"descr\":\"Hi\",\n  \"picture\":\"www.com\"\n}",
       "form": []
     },
     "tests": []
