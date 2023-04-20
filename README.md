@@ -1,4 +1,12 @@
-# MySQL + Flask Boilerplate Project
+# Second Chance Clothing Co: MySQL + Flask Boilerplate Project
+
+This repository is for SecondChanceCo, an online marketplace for secondhand clothing. Individuals can upload photos and descriptions of their items and sell them to others. By providing a platform for people to resell their clothes, it offers an economically feasible alternative for individuals who cannot afford to buy brand new clothing at retail prices.
+
+SecondChanceCo promotes sustainable fashion by reducing the demand for mass production of new clothing items, helping minimize the environmental impact of the fashion industry, which is known to be one of the largest polluting industries in the world. By reducing the demand for the mass-production of clothing items, SecondChanceCo can help minimize the exploitation of workers in production environments (especially fast-fashion). The website counteracts the fast fashion industry by promoting a more sustainable approach to fashion, and acts as a more accessible option for people to buy and sell second hand clothing, eliminating the need to physically go to a thrift store.
+
+This repository is for the flask routes and also contains a docker_compose.yaml file, which breaks down the ports for connection to a database container that can be viewed in DataGrip as well as connection to AppSmith for the deployment of the application to a user. Routes were developed for two blueprints: customers and sellers. Customers could browse posted products, and add or delete products from their cart. Sellers could create new posts in order to post new products, update their profile information with new address information, and also delete product listings no longer available. 
+
+The application for SecondChanceCo was designed and implemented by Alexandra Descoteaux, Sreeya Gudlavalleti, Angela Fee, Jennifer Cheung, and deployed on April 20th 2023.
 
 This repo contains a boilerplate setup for spinning up 3 Docker containers: 
 1. A MySQL 8 container for obvious reasons
